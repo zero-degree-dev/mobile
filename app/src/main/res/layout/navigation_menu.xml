@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_menu"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Home screen"/>
+
+    <Button
+        android:id="@+id/profile_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile screen"/>
+
+    <Button
+        android:id="@+id/auth_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Auth screen"/>
+
+    <Button
+        android:id="@+id/bars_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bars screen"/>
+
+    <Button
+        android:id="@+id/bar_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bar screen"/>
+
+    <Button
+        android:id="@+id/events_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Events screen"/>
+
+    <Button
+        android:id="@+id/drink_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Drink screen"/>
+
+</LinearLayout>

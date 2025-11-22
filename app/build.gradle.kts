@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.zero_degree"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.zero_degree"
@@ -37,6 +37,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
