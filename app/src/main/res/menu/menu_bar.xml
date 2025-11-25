@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Лагеры">
+        <menu>
+            <item
+                android:id="@+id/beer_lager_classic"
+                android:title="Классический лагер — 150 ₽" />
+            <item
+                android:id="@+id/beer_lager_light"
+                android:title="Лёгкий лагер — 130 ₽" />
+            <item
+                android:id="@+id/beer_lager_premium"
+                android:title="Премиум лагер — 180 ₽" />
+        </menu>
+    </item>
+
+    <item android:title="Эли">
+        <menu>
+            <item
+                android:id="@+id/beer_ale_ipa"
+                android:title="IPA безалкогольное — 200 ₽" />
+            <item
+                android:id="@+id/beer_ale_red"
+                android:title="Красный эль — 170 ₽" />
+            <item
+                android:id="@+id/beer_ale_wheat"
+                android:title="Пшеничный эль — 160 ₽" />
+        </menu>
+    </item>
+
+    <item android:title="Стауты">
+        <menu>
+            <item
+                android:id="@+id/beer_stout_classic"
+                android:title="Классический стаут — 190 ₽" />
+            <item
+                android:id="@+id/beer_stout_choco"
+                android:title="Шоколадный стаут — 210 ₽" />
+        </menu>
+    </item>
+
+    <item android:title="Прочие напитки">
+        <menu>
+            <item
+                android:id="@+id/drink_kvass"
+                android:title="Квас — 90 ₽" />
+            <item
+                android:id="@+id/drink_lemonade"
+                android:title="Домашний лимонад — 120 ₽" />
+            <item
+                android:id="@+id/drink_mors"
+                android:title="Морс — 110 ₽" />
+        </menu>
+    </item>
+
+</menu>
