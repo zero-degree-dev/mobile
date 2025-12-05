@@ -53,7 +53,7 @@ class DrinkCatalogFragment : Fragment() {
         chipBitter = view.findViewById(R.id.chipBitter)
         
         // Настройка RecyclerView
-        rvDrinks.layoutManager = LinearLayoutManager(context)
+        rvDrinks.layoutManager = LinearLayoutManager(requireContext())
         rvDrinks.adapter = drinkAdapter
         
         // Фильтры по типу

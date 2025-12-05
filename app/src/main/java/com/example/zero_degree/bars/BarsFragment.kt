@@ -15,4 +15,6 @@ class BarsFragment: Fragment() {
     ): View? {
         return inflater.inflate(R.layout.bars_screen, container, false)
     }
+
+
 }

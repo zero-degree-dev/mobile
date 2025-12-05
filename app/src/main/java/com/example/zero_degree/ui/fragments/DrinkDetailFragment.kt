@@ -40,7 +40,7 @@ class DrinkDetailFragment : Fragment() {
         progressBar = view.findViewById(R.id.progressBar)
         
         // Настройка RecyclerView
-        rvReviews.layoutManager = LinearLayoutManager(context)
+        rvReviews.layoutManager = LinearLayoutManager(requireContext())
         rvReviews.adapter = reviewAdapter
         
         // Кнопка избранного
@@ -88,5 +88,6 @@ class DrinkDetailFragment : Fragment() {
         }
     }
 }
+
 
 

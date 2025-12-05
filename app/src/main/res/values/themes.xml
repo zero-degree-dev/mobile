@@ -1,12 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+
     <style name="Base.Theme.Zerodegree" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">#b4dd1e</item>
+         <item name="colorPrimary">#FFBF00</item>
     </style>
-
     <style name="Theme.Zerodegree" parent="Base.Theme.Zerodegree" />
     <style name="Widget.Button.Menu" parent="">
-        <item name="backgroundTint">#b4dd1e</item>
+        <item name="backgroundTint">#FFBF00</item>
     </style>
 </resources>

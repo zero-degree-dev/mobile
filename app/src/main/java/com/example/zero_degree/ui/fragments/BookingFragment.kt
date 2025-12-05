@@ -48,7 +48,7 @@ class BookingFragment : Fragment() {
         btnBook = view.findViewById(R.id.btnBook)
         
         // Настройка RecyclerView
-        rvBars.layoutManager = LinearLayoutManager(context)
+        rvBars.layoutManager = LinearLayoutManager(requireContext())
         rvBars.adapter = barAdapter
         
         // Кнопки для количества гостей
@@ -114,7 +114,7 @@ class BookingFragment : Fragment() {
         
         viewModel.bookingSuccess.observe(viewLifecycleOwner) { success ->
             if (success) {
-                Toast.makeText(context, "Бронирование создано!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Бронирование создано!", Toast.LENGTH_SHORT).show()
                 viewModel.resetBookingSuccess()
             }
         }
@@ -123,5 +123,6 @@ class BookingFragment : Fragment() {
         viewModel.loadBars()
     }
 }
+
 
 

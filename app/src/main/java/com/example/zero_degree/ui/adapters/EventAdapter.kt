@@ -51,3 +51,4 @@ class EventAdapter : ListAdapter<Event, EventAdapter.EventViewHolder>(EventDiffC
 }
 
 
+

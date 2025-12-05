@@ -22,7 +22,6 @@ class BarsMapFragment : Fragment() {
     
     private val barAdapter = BarAdapter { bar ->
         viewModel.selectBar(bar)
-        // Можно добавить навигацию к детальной странице бара
     }
     
     override fun onCreateView(
@@ -43,7 +42,7 @@ class BarsMapFragment : Fragment() {
         cardSelectedBar = view.findViewById(R.id.cardSelectedBar)
         
         // Настройка RecyclerView
-        rvBars.layoutManager = LinearLayoutManager(context)
+        rvBars.layoutManager = LinearLayoutManager(requireContext())
         rvBars.adapter = barAdapter
         
         // Кнопка "Подробнее"

@@ -89,8 +89,8 @@ class BookingViewModel : ViewModel() {
     fun createBooking(userId: Int) {
         viewModelScope.launch {
             val bar = _selectedBar.value ?: return@launch
-            val date = _selectedDate.value
-            val time = _selectedTime.value
+            val date = _selectedDate.value ?: return@launch
+            val time = _selectedTime.value ?: return@launch
             
             if (date.isEmpty() || time.isEmpty()) {
                 return@launch
@@ -104,7 +104,7 @@ class BookingViewModel : ViewModel() {
                     userId = userId,
                     date = date,
                     time = time,
-                    guestsCount = _guestsCount.value,
+                    guestsCount = _guestsCount.value ?: 1,
                     status = "pending"
                 )
                 

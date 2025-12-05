@@ -48,3 +48,4 @@ class ReviewAdapter : ListAdapter<Review, ReviewAdapter.ReviewViewHolder>(Review
 }
 
 
+

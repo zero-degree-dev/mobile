@@ -48,11 +48,11 @@ class HomeFragment : Fragment() {
         progressBar = view.findViewById(R.id.progressBar)
         
         // Настройка RecyclerView для баров
-        rvRecentBars.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvRecentBars.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvRecentBars.adapter = barAdapter
         
         // Настройка RecyclerView для событий
-        rvEvents.layoutManager = LinearLayoutManager(context)
+        rvEvents.layoutManager = LinearLayoutManager(requireContext())
         rvEvents.adapter = eventAdapter
         
         // Кнопки быстрых действий

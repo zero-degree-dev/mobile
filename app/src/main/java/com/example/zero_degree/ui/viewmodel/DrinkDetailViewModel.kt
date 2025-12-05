@@ -56,7 +56,7 @@ class DrinkDetailViewModel : ViewModel() {
     
     // Переключить избранное
     fun toggleFavorite() {
-        _isFavorite.value = !_isFavorite.value
+        _isFavorite.value = !(_isFavorite.value ?: false)
     }
     
     // Добавить отзыв
