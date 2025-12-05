@@ -56,7 +56,8 @@ class DrinkDetailFragment : Fragment() {
                 view.findViewById<android.widget.TextView>(R.id.tvDescription).text = it.description
                 view.findViewById<android.widget.TextView>(R.id.tvType).text = "Тип: ${it.type}"
                 view.findViewById<android.widget.TextView>(R.id.tvTaste).text = "Вкус: ${it.taste}"
-                
+
+//                view.findViewById<android.widget.ImageView>(R.id.ivDrink).load("https://minzchie.by/images/stories/klassifikatsiya-piva-po-tsvetu-4.jpg");
                 view.findViewById<android.widget.ImageView>(R.id.ivDrink).load(it.imageUrl) {
                     placeholder(R.drawable.ic_launcher_background)
                 }
