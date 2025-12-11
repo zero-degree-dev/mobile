@@ -1,13 +1,20 @@
 package com.example.zero_degree.data.repository
 
+import android.content.Context
 import com.example.zero_degree.data.api.RetrofitClient
+import com.example.zero_degree.data.local.AppDatabase
+import com.example.zero_degree.data.local.mapper.DrinkMapper
+import com.example.zero_degree.data.local.mapper.ReviewMapper
 import com.example.zero_degree.data.model.Drink
 import com.example.zero_degree.data.model.Review
 
 // Репозиторий для работы с напитками
-class DrinkRepository {
+class DrinkRepository(context: Context? = null) {
     
     private val apiService = RetrofitClient.apiService
+    private val database = context?.let { AppDatabase.getDatabase(it) }
+    private val drinkDao = database?.drinkDao()
+    private val reviewDao = database?.reviewDao()
     
     // Моковые данные напитков
     private val mockDrinks = listOf(
@@ -125,13 +132,43 @@ class DrinkRepository {
         return try {
             val response = apiService.getDrinks(type, taste)
             if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-                response.body() ?: getMockDrinks(type, taste)
+                val drinks = response.body()!!
+                // Сохраняем в Room
+                drinkDao?.insertDrinks(DrinkMapper.toEntityList(drinks))
+                drinks
+            } else {
+                // Пытаемся получить из Room
+                val cachedDrinks = drinkDao?.let { dao ->
+                    when {
+                        type != null && taste != null -> dao.getDrinksByTypeAndTaste(type, taste)
+                        type != null -> dao.getDrinksByType(type)
+                        taste != null -> dao.getDrinksByTaste(taste)
+                        else -> dao.getAllDrinks()
+                    }
+                }
+                if (cachedDrinks != null) {
+                    // Если есть кеш, возвращаем его
+                    DrinkMapper.toModelList(cachedDrinks)
+                } else {
+                    // Иначе возвращаем моковые данные
+                    getMockDrinks(type, taste)
+                }
+            }
+        } catch (e: Exception) {
+            // В случае ошибки пытаемся получить из Room
+            val cachedDrinks = drinkDao?.let { dao ->
+                when {
+                    type != null && taste != null -> dao.getDrinksByTypeAndTaste(type, taste)
+                    type != null -> dao.getDrinksByType(type)
+                    taste != null -> dao.getDrinksByTaste(taste)
+                    else -> dao.getAllDrinks()
+                }
+            }
+            if (cachedDrinks != null) {
+                DrinkMapper.toModelList(cachedDrinks)
             } else {
                 getMockDrinks(type, taste)
             }
-        } catch (e: Exception) {
-            // В случае ошибки возвращаем моковые данные
-            getMockDrinks(type, taste)
         }
     }
     
@@ -140,12 +177,27 @@ class DrinkRepository {
         return try {
             val response = apiService.getDrinkById(id)
             if (response.isSuccessful && response.body() != null) {
-                response.body()
+                val drink = response.body()!!
+                // Сохраняем в Room
+                drinkDao?.insertDrink(DrinkMapper.toEntity(drink))
+                drink
+            } else {
+                // Пытаемся получить из Room
+                val cachedDrink = drinkDao?.getDrinkById(id)
+                if (cachedDrink != null) {
+                    DrinkMapper.toModel(cachedDrink)
+                } else {
+                    getMockDrinkById(id)
+                }
+            }
+        } catch (e: Exception) {
+            // В случае ошибки пытаемся получить из Room
+            val cachedDrink = drinkDao?.getDrinkById(id)
+            if (cachedDrink != null) {
+                DrinkMapper.toModel(cachedDrink)
             } else {
                 getMockDrinkById(id)
             }
-        } catch (e: Exception) {
-            getMockDrinkById(id)
         }
     }
     
@@ -154,12 +206,27 @@ class DrinkRepository {
         return try {
             val response = apiService.getDrinkReviews(drinkId)
             if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-                response.body() ?: getMockReviews(drinkId)
+                val reviews = response.body()!!
+                // Сохраняем в Room
+                reviewDao?.insertReviews(ReviewMapper.toEntityList(reviews))
+                reviews
+            } else {
+                // Пытаемся получить из Room
+                val cachedReviews = reviewDao?.getReviewsByDrinkId(drinkId)
+                if (cachedReviews != null) {
+                    ReviewMapper.toModelList(cachedReviews)
+                } else {
+                    getMockReviews(drinkId)
+                }
+            }
+        } catch (e: Exception) {
+            // В случае ошибки пытаемся получить из Room
+            val cachedReviews = reviewDao?.getReviewsByDrinkId(drinkId)
+            if (cachedReviews != null) {
+                ReviewMapper.toModelList(cachedReviews)
             } else {
                 getMockReviews(drinkId)
             }
-        } catch (e: Exception) {
-            getMockReviews(drinkId)
         }
     }
     

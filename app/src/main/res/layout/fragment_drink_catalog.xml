@@ -13,6 +13,15 @@
         android:text="Каталог напитков"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Подзаголовок -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите напиток из нашего меню"
+        android:textSize="14sp"
+        android:textColor="#666666"
         android:layout_marginBottom="16dp" />
 
     <!-- Фильтры по типу -->

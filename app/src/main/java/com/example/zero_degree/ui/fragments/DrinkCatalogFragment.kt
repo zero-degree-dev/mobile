@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zero_degree.R
@@ -15,7 +15,8 @@ import com.google.android.material.chip.Chip
 
 class DrinkCatalogFragment : Fragment() {
     
-    private lateinit var viewModel: DrinkCatalogViewModel
+    private val viewModel by viewModels<DrinkCatalogViewModel>()
+    
     private lateinit var rvDrinks: RecyclerView
     private lateinit var progressBar: View
     private lateinit var chipBeer: Chip
@@ -36,15 +37,14 @@ class DrinkCatalogFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_drink_catalog, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        viewModel = ViewModelProvider(this)[DrinkCatalogViewModel::class.java]
-        
+        // Инициализация views
         rvDrinks = view.findViewById(R.id.rvDrinks)
         progressBar = view.findViewById(R.id.progressBar)
         chipBeer = view.findViewById(R.id.chipBeer)

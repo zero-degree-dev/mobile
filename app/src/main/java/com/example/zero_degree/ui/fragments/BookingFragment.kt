@@ -4,24 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zero_degree.R
 import com.example.zero_degree.ui.adapters.BarSelectionAdapter
 import com.example.zero_degree.ui.viewmodel.BookingViewModel
+import com.google.android.material.textfield.TextInputEditText
 
 class BookingFragment : Fragment() {
     
-    private lateinit var viewModel: BookingViewModel
+    private val viewModel by viewModels<BookingViewModel>()
+    
     private lateinit var rvBars: RecyclerView
     private lateinit var progressBar: View
-    private lateinit var etDate: com.google.android.material.textfield.TextInputEditText
-    private lateinit var etTime: com.google.android.material.textfield.TextInputEditText
-    private lateinit var tvGuestsCount: android.widget.TextView
-    private lateinit var btnBook: View
+    private lateinit var etDate: TextInputEditText
+    private lateinit var etTime: TextInputEditText
+    private lateinit var tvGuestsCount: TextView
+    private lateinit var btnBook: Button
     
     private val barAdapter = BarSelectionAdapter { bar ->
         viewModel.setSelectedBar(bar)
@@ -31,15 +35,14 @@ class BookingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_booking, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        viewModel = ViewModelProvider(this)[BookingViewModel::class.java]
-        
+        // Инициализация views
         rvBars = view.findViewById(R.id.rvBars)
         progressBar = view.findViewById(R.id.progressBar)
         etDate = view.findViewById(R.id.etDate)

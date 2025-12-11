@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zero_degree.R
-import com.example.zero_degree.data.model.Bar
-import com.example.zero_degree.data.model.Event
 import com.example.zero_degree.ui.adapters.BarHorizontalAdapter
 import com.example.zero_degree.ui.adapters.EventAdapter
 import com.example.zero_degree.ui.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
     
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel by viewModels<HomeViewModel>()
+    
     private lateinit var rvRecentBars: RecyclerView
     private lateinit var rvEvents: RecyclerView
     private lateinit var progressBar: View
@@ -34,15 +33,14 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        
+        // Инициализация views
         rvRecentBars = view.findViewById(R.id.rvRecentBars)
         rvEvents = view.findViewById(R.id.rvEvents)
         progressBar = view.findViewById(R.id.progressBar)

@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -15,9 +18,18 @@ import com.example.zero_degree.ui.viewmodel.DrinkDetailViewModel
 
 class DrinkDetailFragment : Fragment() {
     
-    private lateinit var viewModel: DrinkDetailViewModel
+    private val viewModel by viewModels<DrinkDetailViewModel>()
+    
     private lateinit var rvReviews: RecyclerView
     private lateinit var progressBar: View
+    private lateinit var ivDrink: ImageView
+    private lateinit var tvDrinkName: TextView
+    private lateinit var tvDrinkPrice: TextView
+    private lateinit var tvDescription: TextView
+    private lateinit var tvType: TextView
+    private lateinit var tvTaste: TextView
+    private lateinit var tvReviewsTitle: TextView
+    private lateinit var btnFavorite: ImageButton
     
     private val reviewAdapter = ReviewAdapter()
     
@@ -25,48 +37,56 @@ class DrinkDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_drink_detail, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        viewModel = ViewModelProvider(this)[DrinkDetailViewModel::class.java]
-        
         val drinkId = arguments?.getInt("drinkId") ?: 0
         
+        // Инициализация views
         rvReviews = view.findViewById(R.id.rvReviews)
         progressBar = view.findViewById(R.id.progressBar)
+        ivDrink = view.findViewById(R.id.ivDrink)
+        tvDrinkName = view.findViewById(R.id.tvDrinkName)
+        tvDrinkPrice = view.findViewById(R.id.tvDrinkPrice)
+        tvDescription = view.findViewById(R.id.tvDescription)
+        tvType = view.findViewById(R.id.tvType)
+        tvTaste = view.findViewById(R.id.tvTaste)
+        tvReviewsTitle = view.findViewById(R.id.tvReviewsTitle)
+        btnFavorite = view.findViewById(R.id.btnFavorite)
         
         // Настройка RecyclerView
         rvReviews.layoutManager = LinearLayoutManager(requireContext())
         rvReviews.adapter = reviewAdapter
         
         // Кнопка избранного
-        view.findViewById<View>(R.id.btnFavorite).setOnClickListener {
+        btnFavorite.setOnClickListener {
             viewModel.toggleFavorite()
         }
         
         // Наблюдаем за данными
         viewModel.drink.observe(viewLifecycleOwner) { drink ->
             drink?.let {
-                view.findViewById<android.widget.TextView>(R.id.tvDrinkName).text = it.name
-                view.findViewById<android.widget.TextView>(R.id.tvDrinkPrice).text = "${it.price} ₽"
-                view.findViewById<android.widget.TextView>(R.id.tvDescription).text = it.description
-                view.findViewById<android.widget.TextView>(R.id.tvType).text = "Тип: ${it.type}"
-                view.findViewById<android.widget.TextView>(R.id.tvTaste).text = "Вкус: ${it.taste}"
-
-//                view.findViewById<android.widget.ImageView>(R.id.ivDrink).load("https://minzchie.by/images/stories/klassifikatsiya-piva-po-tsvetu-4.jpg");
-                view.findViewById<android.widget.ImageView>(R.id.ivDrink).load(it.imageUrl) {
-                    placeholder(R.drawable.ic_launcher_background)
+                tvDrinkName.text = it.name
+                tvDrinkPrice.text = "${it.price} ₽"
+                tvDescription.text = it.description
+                tvType.text = "Тип: ${it.type}"
+                tvTaste.text = "Вкус: ${it.taste}"
+                
+                if (it.imageUrl.isNotEmpty()) {
+                    ivDrink.load(it.imageUrl) {
+                        placeholder(R.drawable.ic_launcher_background)
+                    }
                 }
             }
         }
         
         viewModel.reviews.observe(viewLifecycleOwner) { reviews ->
             reviewAdapter.submitList(reviews)
-            view.findViewById<android.widget.TextView>(R.id.tvReviewsTitle).text = "Отзывы (${reviews.size})"
+            tvReviewsTitle.text = "Отзывы (${reviews.size})"
         }
         
         viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
@@ -75,8 +95,7 @@ class DrinkDetailFragment : Fragment() {
             } else {
                 android.R.drawable.btn_star_big_off
             }
-            view.findViewById<android.widget.ImageButton>(R.id.btnFavorite)
-                .setImageResource(iconRes)
+            btnFavorite.setImageResource(iconRes)
         }
         
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
