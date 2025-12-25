@@ -1,0 +1,23 @@
+R_DEF: Internal format may change without notice
+local
+id btnAddReview
+id btnFavorite
+id chipBeer
+id chipBitter
+id chipLemonade
+id chipSweet
+id ivDrink
+id progressBar
+id rvBars
+id rvDrinks
+id rvReviews
+id tvBarsTitle
+id tvCalories
+id tvDescription
+id tvDrinkName
+id tvDrinkPrice
+id tvIbu
+id tvType
+layout fragment_drink_catalog
+layout fragment_drink_detail
+string app_name

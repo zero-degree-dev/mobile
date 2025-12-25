@@ -1,0 +1,16 @@
+R_DEF: Internal format may change without notice
+local
+id cardBar
+id ivEvent
+id progressBar
+id rvEvents
+id tvBarAddress
+id tvBarName
+id tvEmpty
+id tvEventDate
+id tvEventDescription
+id tvEventName
+id tvMaxAttendees
+layout events_screen
+layout fragment_event_detail
+string app_name

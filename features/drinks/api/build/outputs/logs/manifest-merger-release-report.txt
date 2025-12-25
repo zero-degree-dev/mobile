@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml:2:13-83
+INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml:2:13-83
+	package
+		INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml
+	xmlns:android
+		ADDED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml:2:23-81
+uses-sdk
+INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml reason: use-sdk injection requested
+INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml
+INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml
+	android:targetSdkVersion
+		INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml
+	android:minSdkVersion
+		INJECTED from /Users/egor/study/zero-mobile/features/drinks/api/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest9557470083977864058.xml
