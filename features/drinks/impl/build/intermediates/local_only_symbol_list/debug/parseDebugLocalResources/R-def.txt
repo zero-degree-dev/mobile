@@ -8,15 +8,12 @@ id chipLemonade
 id chipSweet
 id ivDrink
 id progressBar
-id rvBars
 id rvDrinks
 id rvReviews
-id tvBarsTitle
-id tvCalories
 id tvDescription
 id tvDrinkName
 id tvDrinkPrice
-id tvIbu
+id tvTaste
 id tvType
 layout fragment_drink_catalog
 layout fragment_drink_detail

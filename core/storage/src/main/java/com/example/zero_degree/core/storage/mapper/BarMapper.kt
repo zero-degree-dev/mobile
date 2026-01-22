@@ -1,12 +1,15 @@
 package com.example.zero_degree.core.storage.mapper
 
+import android.util.Log
 import com.example.zero_degree.core.api.model.Bar
 import com.example.zero_degree.core.storage.entity.BarEntity
 
 object BarMapper {
     
+    private const val TAG = "BarMapper"
+    
     fun toEntity(bar: Bar): BarEntity {
-        return BarEntity(
+        val entity = BarEntity(
             id = bar.id,
             name = bar.name,
             address = bar.address,
@@ -17,10 +20,12 @@ object BarMapper {
             description = bar.description,
             phone = bar.phone
         )
+        Log.d(TAG, "toEntity: Конвертация Bar(id=${bar.id}, name=${bar.name}) -> BarEntity(id=${entity.id}, name=${entity.name})")
+        return entity
     }
     
     fun toModel(entity: BarEntity): Bar {
-        return Bar(
+        val model = Bar(
             id = entity.id,
             name = entity.name,
             address = entity.address,
@@ -34,6 +39,8 @@ object BarMapper {
             events = null,
             drinks = null
         )
+        Log.d(TAG, "toModel: Конвертация BarEntity(id=${entity.id}, name=${entity.name}) -> Bar(id=${model.id}, name=${model.name})")
+        return model
     }
     
     fun toModelList(entities: List<BarEntity>): List<Bar> {

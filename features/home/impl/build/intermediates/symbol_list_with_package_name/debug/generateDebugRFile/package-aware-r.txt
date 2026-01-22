@@ -1,5 +1,4 @@
 com.example.zero_degree.features.home.impl
-id btnBook
 id ivProfileAvatar
 id progressBar
 id rvBars

@@ -75,18 +75,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Book Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnBook"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Забронировать столик"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:minHeight="56dp"
-                style="@style/Widget.Button.Primary"
-                android:layout_marginBottom="32dp" />
-
             <!-- Bookings Section -->
             <LinearLayout
                 android:layout_width="match_parent"

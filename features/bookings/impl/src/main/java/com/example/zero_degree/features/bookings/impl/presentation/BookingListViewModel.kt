@@ -5,11 +5,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zero_degree.core.api.model.Booking
 import com.example.zero_degree.core.api.TokenManager
+import com.example.zero_degree.core.storage.AppDatabase
+import com.example.zero_degree.core.storage.mapper.BookingMapper
 import com.example.zero_degree.features.bookings.api.BookingRepository
 import com.example.zero_degree.features.bookings.impl.BookingRepositoryImpl
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,17 +33,33 @@ class BookingListViewModel(application: Application) : AndroidViewModel(applicat
     
     fun loadBookings() {
         viewModelScope.launch {
-            _isLoading.value = true
             val userId = TokenManager.getUserId(context)
-            userId?.let {
-                repository.getBookings(userId, null, null).fold(
-                    onSuccess = { bookingsList ->
-                        allBookings = bookingsList
-                        filterBookings()
-                    },
-                    onFailure = { }
-                )
+            if (userId == null) return@launch
+
+            // 1) Сразу показываем данные из персистентного хранилища (если есть),
+            // чтобы не ждать сетевого таймаута.
+            try {
+                val cachedBookings = withContext(Dispatchers.IO) {
+                    val dao = AppDatabase.getDatabase(context).bookingDao()
+                    BookingMapper.toModelList(dao.getBookingsByUserId(userId))
+                }
+                if (cachedBookings.isNotEmpty()) {
+                    allBookings = cachedBookings
+                    filterBookings()
+                }
+            } catch (_: Exception) {
+                // Если кеш недоступен, просто продолжаем с сетевым запросом
             }
+
+            // 2) Обновляем данные с сервера (и репозиторий сохранит их в БД)
+            _isLoading.value = true
+            repository.getBookings(userId, null, null).fold(
+                onSuccess = { bookingsList ->
+                    allBookings = bookingsList
+                    filterBookings()
+                },
+                onFailure = { }
+            )
             _isLoading.value = false
         }
     }

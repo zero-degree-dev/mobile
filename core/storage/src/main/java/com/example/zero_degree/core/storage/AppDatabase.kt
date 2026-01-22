@@ -1,6 +1,7 @@
 package com.example.zero_degree.core.storage
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -27,18 +28,22 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun reviewDao(): ReviewDao
     
     companion object {
+        private const val TAG = "AppDatabase"
+        
         @Volatile
         private var INSTANCE: AppDatabase? = null
         
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
+                Log.d(TAG, "getDatabase: Создание экземпляра БД...")
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "zero_degree_database"
                 )
-                    .fallbackToDestructiveMigration() // Для разработки - удаляет старую БД
+                    .fallbackToDestructiveMigration()
                     .build()
+                Log.d(TAG, "getDatabase: БД успешно создана: ${instance.isOpen}")
                 INSTANCE = instance
                 instance
             }

@@ -1,6 +1,5 @@
 R_DEF: Internal format may change without notice
 local
-id btnBook
 id ivProfileAvatar
 id progressBar
 id rvBars

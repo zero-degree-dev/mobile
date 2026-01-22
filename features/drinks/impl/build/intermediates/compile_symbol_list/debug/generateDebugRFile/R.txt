@@ -6,15 +6,12 @@ int id chipLemonade 0x0
 int id chipSweet 0x0
 int id ivDrink 0x0
 int id progressBar 0x0
-int id rvBars 0x0
 int id rvDrinks 0x0
 int id rvReviews 0x0
-int id tvBarsTitle 0x0
-int id tvCalories 0x0
 int id tvDescription 0x0
 int id tvDrinkName 0x0
 int id tvDrinkPrice 0x0
-int id tvIbu 0x0
+int id tvTaste 0x0
 int id tvType 0x0
 int layout fragment_drink_catalog 0x0
 int layout fragment_drink_detail 0x0

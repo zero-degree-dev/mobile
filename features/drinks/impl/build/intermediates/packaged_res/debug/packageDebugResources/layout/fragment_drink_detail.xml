@@ -122,41 +122,13 @@
                             android:layout_marginBottom="8dp" />
 
                         <TextView
-                            android:id="@+id/tvIbu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginBottom="8dp"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/tvCalories"
+                            android:id="@+id/tvTaste"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/tvBarsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Доступно в барах"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginBottom="16dp"
-                    android:visibility="gone" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBars"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginBottom="24dp"
-                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -9,7 +9,6 @@ import com.example.zero_degree.core.api.model.Booking
 import com.example.zero_degree.core.api.model.Drink
 import com.example.zero_degree.core.api.model.Event
 import com.example.zero_degree.core.api.model.User
-import com.example.zero_degree.features.bookings.api.BookingRepository
 import com.example.zero_degree.features.bookings.impl.BookingRepositoryImpl
 import com.example.zero_degree.features.home.api.HomeRepository
 import com.example.zero_degree.features.home.impl.HomeRepositoryImpl
@@ -45,8 +44,28 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val _bookingCancelled = MutableStateFlow(false)
     val bookingCancelled = _bookingCancelled.asStateFlow()
     
-    private val bookingRepository: BookingRepository = BookingRepositoryImpl(context)
+    private val bookingRepository = BookingRepositoryImpl(context)
     
+    private fun computeUpcomingBookings(bookings: List<Booking>): List<Booking> {
+        // Фильтруем только активные (не отмененные) и сортируем от ближайшей к дальнейшей
+        val now = Date()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val currentDate = dateFormat.format(now)
+        val currentTime = timeFormat.format(now)
+
+        val activeBookings = bookings.filter { booking ->
+            booking.status != "cancelled" &&
+                (booking.date > currentDate ||
+                    (booking.date == currentDate && booking.time >= currentTime))
+        }
+
+        // Сортируем от ближайшей к дальнейшей (по дате и времени)
+        return activeBookings.sortedWith(compareBy<Booking> { booking ->
+            "${booking.date} ${booking.time}"
+        })
+    }
+
     fun loadHomeData() {
         viewModelScope.launch {
             _isLoading.value = true
@@ -95,28 +114,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 // Загружаем бронирования пользователя
                 val userId = TokenManager.getUserId(context)
                 userId?.let {
+                    // 1) Сразу отдаём данные из персистентного хранилища, чтобы не ждать сеть/таймаут.
+                    try {
+                        val cachedBookings = bookingRepository.getCachedBookings(it)
+                        if (cachedBookings.isNotEmpty()) {
+                            _upcomingBookings.value = computeUpcomingBookings(cachedBookings)
+                        }
+                    } catch (_: Exception) {
+                        // ignore cache errors, fallback to network
+                    }
+
+                    // 2) Затем обновляем с сервера
                     bookingRepository.getBookings(it, null, null).fold(
                         onSuccess = { bookings ->
-                            // Фильтруем только активные (не отмененные) и сортируем от ближайшей к дальнейшей
-                            val now = Date()
-                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                            val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-                            val currentDate = dateFormat.format(now)
-                            val currentTime = timeFormat.format(now)
-                            
-                            val activeBookings = bookings.filter { booking ->
-                                booking.status != "cancelled" && 
-                                (booking.date > currentDate || 
-                                 (booking.date == currentDate && booking.time >= currentTime))
-                            }
-                            
-                            // Сортируем от ближайшей к дальнейшей (по дате и времени)
-                            val sortedBookings = activeBookings.sortedWith(compareBy<Booking> { booking ->
-                                // Создаем комбинированную строку для сортировки
-                                "${booking.date} ${booking.time}"
-                            })
-                            
-                            _upcomingBookings.value = sortedBookings
+                            _upcomingBookings.value = computeUpcomingBookings(bookings)
                         },
                         onFailure = { e ->
                             e.printStackTrace()
