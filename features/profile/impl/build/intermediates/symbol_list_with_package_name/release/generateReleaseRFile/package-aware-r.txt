@@ -1,0 +1,10 @@
+com.example.zero_degree.features.profile.impl
+id btnDeleteAccount
+id btnEditProfile
+id btnLogout
+id btnMyBookings
+id btnSettings
+id ivProfileAvatar
+id usernameText
+layout profile_screen
+string app_name

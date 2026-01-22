@@ -1,0 +1,15 @@
+com.example.zero_degree.features.bookings.impl
+id btnBook
+id btnDecreaseGuests
+id btnIncreaseGuests
+id etDate
+id etTime
+id progressBar
+id rvBars
+id rvBookings
+id tabLayout
+id tvEmpty
+id tvGuestsCount
+layout fragment_booking
+layout fragment_booking_list
+string app_name

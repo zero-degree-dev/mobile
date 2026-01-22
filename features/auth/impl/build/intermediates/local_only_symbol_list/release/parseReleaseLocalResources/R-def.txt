@@ -1,0 +1,21 @@
+R_DEF: Internal format may change without notice
+local
+id btnLogin
+id btnRegister
+id emailLayout
+id etEmail
+id etName
+id etPassword
+id guideline
+id ivLogo
+id nameLayout
+id passwordLayout
+id progressBar
+id tabLayout
+id tvError
+id tvTitle
+id viewPager
+layout auth_screen
+layout fragment_login
+layout fragment_register
+string app_name
