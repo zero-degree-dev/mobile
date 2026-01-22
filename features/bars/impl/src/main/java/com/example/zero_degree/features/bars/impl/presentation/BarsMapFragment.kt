@@ -1,11 +1,15 @@
 package com.example.zero_degree.features.bars.impl.presentation
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -23,8 +27,10 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Color
+import android.content.pm.PackageManager
 import android.util.Log
 import com.yandex.mapkit.mapview.MapView
+import com.yandex.mapkit.user_location.UserLocationLayer
 import com.example.zero_degree.core.ui.NavigationHelper
 import kotlinx.coroutines.launch
 
@@ -47,6 +53,23 @@ class BarsMapFragment : ProtectedFragment() {
     private lateinit var btnBarDetails: MaterialButton
     
     private var mapObjectCollection: MapObjectCollection? = null
+    private var userLocationLayer: UserLocationLayer? = null
+
+    private val locationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
+            val granted = result[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
+                result[Manifest.permission.ACCESS_COARSE_LOCATION] == true
+
+            if (granted) {
+                enableUserLocationLayer()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Без доступа к геопозиции метка 'Вы здесь' не будет работать",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,6 +115,8 @@ class BarsMapFragment : ProtectedFragment() {
         } catch (e: Exception) {
             Log.e(TAG, "Ошибка при установке позиции камеры", e)
         }
+
+        ensureLocationPermissionAndEnableUserLocation()
         
         btnBarDetails.setOnClickListener {
             val bar = viewModel.selectedBar.value
@@ -140,6 +165,44 @@ class BarsMapFragment : ProtectedFragment() {
         
         // Загружаем данные
         viewModel.loadBars()
+    }
+
+    private fun ensureLocationPermissionAndEnableUserLocation() {
+        val hasFine = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+        val hasCoarse = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+        if (hasFine || hasCoarse) {
+            enableUserLocationLayer()
+        } else {
+            locationPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+    }
+
+    private fun enableUserLocationLayer() {
+        try {
+            if (!this::mapView.isInitialized) return
+
+            if (userLocationLayer == null) {
+                userLocationLayer = MapKitFactory.getInstance()
+                    .createUserLocationLayer(mapView.mapWindow)
+            }
+            userLocationLayer?.isVisible = true
+            userLocationLayer?.isHeadingEnabled = true
+        } catch (e: Exception) {
+            Log.e(TAG, "Ошибка при включении UserLocationLayer", e)
+        }
     }
     
     private fun updateMapMarkers(bars: List<Bar>) {
