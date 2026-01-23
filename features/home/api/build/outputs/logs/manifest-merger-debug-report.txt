@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml:2:13-83
-INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml:2:13-83
+ADDED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml:2:13-83
+INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml:2:13-83
 	package
-		INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml
+		INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml
 	xmlns:android
-		ADDED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml:2:23-81
+		ADDED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml:2:23-81
 uses-sdk
-INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml reason: use-sdk injection requested
-INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml
-INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml
+INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml reason: use-sdk injection requested
+INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml
+INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml
 	android:targetSdkVersion
-		INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml
+		INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml
 	android:minSdkVersion
-		INJECTED from /Users/egor/study/zero-mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest12669949057823883838.xml
+		INJECTED from /Users/pipupa/AndroidStudioProjects/mobile/features/home/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13409994164780508787.xml
