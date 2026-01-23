@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+id btnAddReview
+id btnBarDetails
+id btnBookTable
+id btnShowList
+id btnShowMap
+id cardSelectedBar
+id fragmentContainer
+id headerLayout
+id ivBar
+id mapView
+id progressBar
+id rvBars
+id rvReviews
+id tvBarAddress
+id tvBarCapacity
+id tvBarDescription
+id tvBarName
+id tvBarPhone
+id tvEmpty
+layout bar_screen
+layout fragment_bars_container
+layout fragment_bars_list
+layout fragment_bars_map
+string app_name

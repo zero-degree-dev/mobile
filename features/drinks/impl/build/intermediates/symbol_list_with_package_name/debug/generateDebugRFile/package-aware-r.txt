@@ -1,0 +1,19 @@
+com.example.zero_degree.features.drinks.impl
+id btnAddReview
+id btnFavorite
+id chipBeer
+id chipBitter
+id chipLemonade
+id chipSweet
+id ivDrink
+id progressBar
+id rvDrinks
+id rvReviews
+id tvDescription
+id tvDrinkName
+id tvDrinkPrice
+id tvTaste
+id tvType
+layout fragment_drink_catalog
+layout fragment_drink_detail
+string app_name

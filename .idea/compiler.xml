@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="21" />
+    <bytecodeTargetLevel target="21">
+      <module name="zero-degree.core-data" target="21" />
+      <module name="zero-degree.feature-auth" target="21" />
+      <module name="zero-degree.feature-bars" target="21" />
+      <module name="zero-degree.feature-bookings" target="21" />
+      <module name="zero-degree.feature-drinks" target="21" />
+      <module name="zero-degree.feature-events" target="21" />
+      <module name="zero-degree.feature-home" target="21" />
+      <module name="zero-degree.feature-profile" target="21" />
+      <module name="zero-degree.lib.ImageLoaderCoil" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml:2:13-83
+INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml:2:13-83
+	package
+		INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml
+	xmlns:android
+		ADDED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml:2:23-81
+uses-sdk
+INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml reason: use-sdk injection requested
+INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml
+INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml
+	android:targetSdkVersion
+		INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml
+	android:minSdkVersion
+		INJECTED from /Users/egor/study/zero-mobile/features/auth/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest8738587329501833637.xml

@@ -1,0 +1,15 @@
+R_DEF: Internal format may change without notice
+local
+id ivProfileAvatar
+id progressBar
+id rvBars
+id rvBookings
+id rvDrinks
+id rvEvents
+id tvAllBars
+id tvAllDrinks
+id tvAllEvents
+id tvProfileBalance
+id tvProfileName
+layout fragment_home
+string app_name

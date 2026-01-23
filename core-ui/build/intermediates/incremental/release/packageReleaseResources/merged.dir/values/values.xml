@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#4ECDC4</color>
+    <color name="accent_dark">#3BA5A0</color>
+    <color name="accent_light">#7BDDD6</color>
+    <color name="background">#FFFBF9</color>
+    <color name="black">#000000</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="error">#DC3545</color>
+    <color name="error_container">#FFE5E5</color>
+    <color name="primary">#FFD300</color>
+    <color name="primary_container">#FFF9CC</color>
+    <color name="primary_dark">#E6BE00</color>
+    <color name="primary_light">#FFE033</color>
+    <color name="secondary">#F7931E</color>
+    <color name="secondary_container">#FFECD5</color>
+    <color name="secondary_dark">#D97A0F</color>
+    <color name="secondary_light">#FFB84D</color>
+    <color name="success">#28A745</color>
+    <color name="success_container">#E5F5E9</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="text_hint">#999999</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">ZERO°</string>
+    <style name="Widget.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Widget.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

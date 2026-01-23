@@ -1,0 +1,11 @@
+R_DEF: Internal format may change without notice
+local
+id btnDeleteAccount
+id btnEditProfile
+id btnLogout
+id btnMyBookings
+id btnSettings
+id ivProfileAvatar
+id usernameText
+layout profile_screen
+string app_name

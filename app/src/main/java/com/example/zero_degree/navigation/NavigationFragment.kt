@@ -8,13 +8,14 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.zero_degree.R
-import com.example.zero_degree.authorization.AuthorizationFragment
-import com.example.zero_degree.bar.BarFragment
-import com.example.zero_degree.bars.BarsFragment
-import com.example.zero_degree.drink.DrinkFragment
-import com.example.zero_degree.events.EventsFragment
-import com.example.zero_degree.home.HomeFragment
-import com.example.zero_degree.profile.ProfileFragment
+import com.example.zero_degree.core.ui.NavigationHelper
+import com.example.zero_degree.features.auth.impl.presentation.AuthorizationFragment
+import com.example.zero_degree.features.bars.impl.presentation.BarFragment
+import com.example.zero_degree.features.bars.impl.presentation.BarsMapFragment
+import com.example.zero_degree.features.drinks.impl.presentation.DrinkCatalogFragment
+import com.example.zero_degree.features.events.impl.presentation.EventsFragment
+import com.example.zero_degree.features.home.impl.presentation.HomeFragment
+import com.example.zero_degree.features.profile.impl.presentation.ProfileFragment
 
 class NavigationFragment: Fragment() {
     override fun onCreateView(
@@ -29,8 +30,10 @@ class NavigationFragment: Fragment() {
             if (child is Button) {
                 val buttonId = resources.getResourceEntryName(child.id)
                 child.setOnClickListener {
-                    replaceFragment(fragments[buttonId]?.invoke())
-                    println(buttonId)
+                    val fragment = fragments[buttonId]?.invoke()
+                    if (fragment != null) {
+                        NavigationHelper.replaceFragment(activity, fragment)
+                    }
                 }
             }
         }
@@ -38,20 +41,14 @@ class NavigationFragment: Fragment() {
         return rootView
     }
 
-    private fun replaceFragment(fragment: Fragment?) {
-        if (fragment == null) return Unit
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
-    }
-
     private val fragments = mapOf<String, (() -> Fragment)>(
         "home_button" to { HomeFragment() },
         "profile_button" to { ProfileFragment() },
         "auth_button" to { AuthorizationFragment() },
-        "bars_button" to { BarsFragment() },
+        "bars_button" to { BarsMapFragment() },
         "bar_button" to { BarFragment() },
         "events_button" to { EventsFragment() },
-        "drink_button" to { DrinkFragment() }
+        "drink_button" to { DrinkCatalogFragment() },
+        "menu_button" to { DrinkCatalogFragment() }
     )
 }

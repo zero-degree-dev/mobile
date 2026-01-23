@@ -11,6 +11,41 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core-ui" />
+            <option value="$PROJECT_DIR$/core/api" />
+            <option value="$PROJECT_DIR$/core/storage" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/auth" />
+            <option value="$PROJECT_DIR$/features/auth/api" />
+            <option value="$PROJECT_DIR$/features/auth/impl" />
+            <option value="$PROJECT_DIR$/features/bars" />
+            <option value="$PROJECT_DIR$/features/bars/api" />
+            <option value="$PROJECT_DIR$/features/bars/impl" />
+            <option value="$PROJECT_DIR$/features/bookings" />
+            <option value="$PROJECT_DIR$/features/bookings/api" />
+            <option value="$PROJECT_DIR$/features/bookings/impl" />
+            <option value="$PROJECT_DIR$/features/drinks" />
+            <option value="$PROJECT_DIR$/features/drinks/api" />
+            <option value="$PROJECT_DIR$/features/drinks/impl" />
+            <option value="$PROJECT_DIR$/features/events" />
+            <option value="$PROJECT_DIR$/features/events/api" />
+            <option value="$PROJECT_DIR$/features/events/impl" />
+            <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/home/api" />
+            <option value="$PROJECT_DIR$/features/home/impl" />
+            <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/profile/api" />
+            <option value="$PROJECT_DIR$/features/profile/impl" />
+            <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/lib/injector" />
+            <option value="$PROJECT_DIR$/libs" />
+            <option value="$PROJECT_DIR$/libs/ImageLoader" />
+            <option value="$PROJECT_DIR$/libs/ImageLoader/api" />
+            <option value="$PROJECT_DIR$/libs/ImageLoader/impl" />
+            <option value="$PROJECT_DIR$/libs/User" />
+            <option value="$PROJECT_DIR$/libs/User/api" />
+            <option value="$PROJECT_DIR$/libs/User/impl" />
           </set>
         </option>
       </GradleProjectSettings>
